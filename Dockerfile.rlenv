@@ -1,0 +1,23 @@
+FROM debian:bookworm
+
+# Install all build and runtime dependencies
+RUN apt update && \
+    DEBIAN_FRONTEND=noninteractive apt install build-essential clang -y && \
+    rm -rf /var/lib/apt/lists/*
+
+# Copy source code to standardized location
+COPY . /rlenv/source/crumsort
+WORKDIR /rlenv/source/crumsort
+
+# Build the application from source
+WORKDIR /rlenv/source/crumsort/fuzz
+RUN make
+
+# Copy build artifacts to expected location
+RUN cp /rlenv/source/crumsort/fuzz/crumsort-fuzz /crumsort-fuzz
+
+# Copy rlenv directory from build context
+COPY rlenv /rlenv
+
+# Set working directory
+WORKDIR /
