@@ -8,5 +8,5 @@
   "run_image_with_digest": "ghcr.io/mayhemheroes/crumsort@sha256:0ed5f23320968b03a9c4ea9ea0f1d1d35a9c2d55e3f5e87c83c398855115ee67",
   "git_repo_url": "git@github.com:mayhemheroes/crumsort.git",
   "git_revision": "388d2aa0adf42afd65e6199a08354ccbcc28c2c5",
-  "target_executable": null
+  "target_executable": "/crumsort-fuzz"
 }
