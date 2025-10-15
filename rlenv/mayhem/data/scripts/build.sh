@@ -14,8 +14,9 @@ cd /rlenv/source/crumsort
 cd fuzz
 make
 
-# Copy build artifacts to expected location
+# Copy build artifacts to expected location and ensure world-writable
 cp /rlenv/source/crumsort/fuzz/crumsort-fuzz /crumsort-fuzz
+chmod 777 /crumsort-fuzz
 
 # Verify build artifacts exist
 if [ ! -f /crumsort-fuzz ]; then

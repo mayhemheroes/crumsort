@@ -5,16 +5,22 @@ RUN apt update && \
     DEBIAN_FRONTEND=noninteractive apt install build-essential clang -y && \
     rm -rf /var/lib/apt/lists/*
 
+# Create /rlenv/source directory with world-writable permissions
+RUN mkdir -p /rlenv/source && chmod -R 777 /rlenv/source
+
 # Copy source code to standardized location
 COPY . /rlenv/source/crumsort
-WORKDIR /rlenv/source/crumsort
+
+# Ensure source directory is world-writable for unprivileged users
+RUN chmod -R 777 /rlenv/source
 
 # Build the application from source
 WORKDIR /rlenv/source/crumsort/fuzz
 RUN make
 
-# Copy build artifacts to expected location
-RUN cp /rlenv/source/crumsort/fuzz/crumsort-fuzz /crumsort-fuzz
+# Copy build artifacts to expected location and make it world-writable
+RUN cp /rlenv/source/crumsort/fuzz/crumsort-fuzz /crumsort-fuzz && \
+    chmod 777 /crumsort-fuzz
 
 # Copy rlenv directory from build context
 COPY rlenv /rlenv
