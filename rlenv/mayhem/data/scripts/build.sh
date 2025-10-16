@@ -15,7 +15,7 @@ cd fuzz
 make
 
 # Copy build artifacts to expected location (preserving permissions from Docker build)
-cp /rlenv/source/crumsort/fuzz/crumsort-fuzz /crumsort-fuzz
+cp -f /rlenv/source/crumsort/fuzz/crumsort-fuzz /crumsort-fuzz
 
 # Verify build artifacts exist
 if [ ! -f /crumsort-fuzz ]; then
