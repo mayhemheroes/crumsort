@@ -15,7 +15,8 @@ cd fuzz
 make
 
 # Copy build artifacts to expected location (preserving permissions from Docker build)
-cp -f /rlenv/source/crumsort/fuzz/crumsort-fuzz /crumsort-fuzz
+# Use cat for busybox compatibility when we can't remove the file
+cat /rlenv/source/crumsort/fuzz/crumsort-fuzz > /crumsort-fuzz
 
 # Verify build artifacts exist
 if [ ! -f /crumsort-fuzz ]; then
