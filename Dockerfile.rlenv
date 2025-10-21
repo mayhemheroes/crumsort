@@ -2,7 +2,7 @@ FROM debian:bookworm
 
 # Install all build and runtime dependencies
 RUN apt update && \
-    DEBIAN_FRONTEND=noninteractive apt install build-essential clang -y && \
+    DEBIAN_FRONTEND=noninteractive apt install build-essential clang jq -y && \
     rm -rf /var/lib/apt/lists/*
 
 # Create /rlenv/source directory with world-writable permissions
