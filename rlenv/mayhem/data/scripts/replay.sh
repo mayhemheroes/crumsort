@@ -9,4 +9,9 @@ fi
 
 # Disable ASLR for deterministic crash behavior
 # This ensures that crashes are reproducible regardless of memory layout randomization
-setarch $(uname -m) -R /crumsort-fuzz $1
+# Use noaslr if available, otherwise fall back to setarch
+if command -v noaslr >/dev/null 2>&1; then
+    noaslr /crumsort-fuzz $1
+else
+    setarch $(uname -m) -R /crumsort-fuzz $1
+fi
