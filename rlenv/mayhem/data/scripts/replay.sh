@@ -7,4 +7,6 @@ if [ $# -ne 1 ]; then
     exit 1
 fi
 
-/crumsort-fuzz $1
+# Disable ASLR for deterministic crash behavior
+# This ensures that crashes are reproducible regardless of memory layout randomization
+setarch $(uname -m) -R /crumsort-fuzz $1

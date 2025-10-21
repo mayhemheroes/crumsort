@@ -1,0 +1,6 @@
+{
+  "target_executable": "/crumsort-fuzz",
+  "run_id": "mayhemheroes/crumsort/crumsort-fuzz/1",
+  "git_commit": "388d2aa0adf42afd65e6199a08354ccbcc28c2c5",
+  "original_image": "ghcr.io/mayhemheroes/crumsort:main"
+}
