@@ -8,6 +8,9 @@ RUN apt update && \
 # Create /rlenv/source directory with world-writable permissions
 RUN mkdir -p /rlenv/source && chmod -R 777 /rlenv/source
 
+# Copy MTV binary for test execution and validation
+COPY --from="us-east4-docker.pkg.dev/forallsecure-1/rlenv-staging/rlenv-mtv-static:latest" /rlenv/bin/mtv /rlenv/bin/mtv
+
 # Copy source code to standardized location
 COPY . /rlenv/source/crumsort
 
