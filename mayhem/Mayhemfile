@@ -1,0 +1,6 @@
+project: crumsort
+target: crumsort-fuzz
+
+cmds:
+    - cmd: ./crumsort-fuzz
+      libfuzzer: true
